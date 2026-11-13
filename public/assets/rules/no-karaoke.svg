@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" fill="none" role="img" aria-label="No karaoke">
+  <circle cx="48" cy="48" r="40" stroke="#233726" stroke-width="4"/>
+  <rect x="41" y="20" width="14" height="28" rx="7" stroke="#233726" stroke-width="4"/>
+  <path d="M34 42a14 14 0 0 0 28 0M48 56v10M40 66h16" stroke="#233726" stroke-width="4" stroke-linecap="round"/>
+  <path d="M22 74L74 22" stroke="#C0392B" stroke-width="6" stroke-linecap="round"/>
+</svg>

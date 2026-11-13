@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" fill="none" role="img" aria-label="No smoking">
+  <circle cx="48" cy="48" r="40" stroke="#233726" stroke-width="4"/>
+  <path d="M24 52h34v8H24zM58 52h14v8H58z" stroke="#233726" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M64 48c0-5 6-6 6-12M70 48c0-3 3-4 3-7" stroke="#233726" stroke-width="4" stroke-linecap="round"/>
+  <path d="M22 74L74 22" stroke="#C0392B" stroke-width="6" stroke-linecap="round"/>
+</svg>
