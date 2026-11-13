@@ -1,112 +1,439 @@
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import Reveal from "../components/Reveal";
+import CountUp from "../components/CountUp";
 import birdviewImg from "../img/birdview.jpg";
 import cityhallImg from "../img/cityhall.jpg";
 import jeepImg from "../img/jeep.jpg";
 import rotondaImg from "../img/rotonda.jpg";
 import ulongapoImg from "../img/ulongapo.jpg";
 
-const cityImages = [
+const stats = [
+  { value: 10, label: "City Councilors" },
+  { value: 5, label: "City Rules" },
+  { value: 8, label: "Spots & Eateries" },
+  { value: 24, suffix: "/7", label: "Emergency Response" },
+];
+
+const quickLinks = [
   {
-    src: jeepImg,
-    alt: "Olongapo City Jeepney",
-    framed: false,
+    title: "CITY OFFICIALS",
+    text: "Meet the people leading Olongapo City and the team behind its public service.",
+    to: "/officials",
   },
   {
-    src: cityhallImg,
-    alt: "Olongapo City Hall",
-    framed: true,
+    title: "CITY RULES",
+    text: "Know the ordinances that keep our streets clean, safe, and orderly.",
+    to: "/rules",
   },
   {
-    src: rotondaImg,
-    alt: "Olongapo City Rotonda",
-    framed: false,
+    title: "CONTACT US",
+    text: "Reach the right office or hotline when you need help, any time of day.",
+    to: "/contact",
   },
 ];
 
+const marqueeWords = [
+  "OLONGAPO CITY",
+  "APO'S PRIDE",
+  "CITY OF BEAUTY AND PRIDE",
+  "SUBIC BAY FREEPORT",
+];
+
+function handleSpotlight(event) {
+  const el = event.currentTarget;
+  const rect = el.getBoundingClientRect();
+  el.style.setProperty("--mx", `${event.clientX - rect.left}px`);
+  el.style.setProperty("--my", `${event.clientY - rect.top}px`);
+}
+
 export default function Welcome() {
+  const heroRef = useRef(null);
+  const heroImageRef = useRef(null);
+
+  useEffect(() => {
+    let frame = 0;
+
+    const onScroll = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        const offset = Math.min(window.scrollY, 900);
+        if (heroImageRef.current) {
+          heroImageRef.current.style.transform = `translate3d(0, ${offset * 0.16}px, 0) scale(1.08)`;
+        }
+        frame = 0;
+      });
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(frame);
+    };
+  }, []);
+
+  const onHeroPointerMove = (event) => {
+    const hero = heroRef.current;
+    if (!hero) return;
+    const rect = hero.getBoundingClientRect();
+    hero.style.setProperty(
+      "--mx",
+      `${((event.clientX - rect.left) / rect.width) * 100}%`,
+    );
+    hero.style.setProperty(
+      "--my",
+      `${((event.clientY - rect.top) / rect.height) * 100}%`,
+    );
+  };
+
   return (
     <div className="flex min-h-screen flex-col bg-[#FFF]">
       <Navbar active="HOME" />
 
-      <main className="flex flex-1 flex-col">
-        <section className="relative overflow-hidden">
-          <img
-            src={birdviewImg}
-            alt="Aerial view of Olongapo City"
-            className="absolute inset-0 h-full w-full object-cover"
-          />
-          <div className="absolute inset-0 bg-[rgba(35,55,38,0.52)]" />
+      <main id="main-content" className="flex flex-1 flex-col">
+        {/* Hero */}
+        <section
+          ref={heroRef}
+          onPointerMove={onHeroPointerMove}
+          className="relative isolate flex min-h-[calc(88svh/0.85)] items-center overflow-hidden bg-[#142116]"
+        >
+          <div className="absolute inset-0 -z-10 overflow-hidden">
+            <img
+              ref={heroImageRef}
+              src={birdviewImg}
+              alt="Aerial view of Olongapo City"
+              className="h-[112%] w-full object-cover opacity-80 will-change-transform"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#0C170F]/85 via-[#142116]/70 to-[#142116]" />
+            <div className="hero-glow absolute inset-0" />
+          </div>
 
-          <div className="relative mx-auto flex w-full max-w-7xl flex-col items-center gap-8 px-4 py-20 text-center sm:py-28">
-            <h1 className="font-inter text-4xl font-black text-[#FAFAFA] sm:text-5xl lg:text-[64px]">
-              WELCOME TO OLONGAPO CITY
-            </h1>
-            <Link
-              to="/tourist-spots"
-              className="inline-block rounded-[20px] border border-[#233726] bg-[#349B43] px-8 py-3 transition-colors hover:bg-[#2b8038] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FAFAFA]"
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute left-[6%] top-[20%] h-24 w-24 animate-float rounded-full border border-[#DEF6AF]/25"
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute right-[8%] top-[26%] h-44 w-44 animate-float-slow rounded-full bg-[#349B43]/20 blur-2xl"
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute bottom-[18%] left-[16%] h-16 w-16 animate-float-slow rounded-full border border-[#FFBD53]/30"
+          />
+
+          <div className="relative mx-auto flex w-full max-w-7xl flex-col items-center gap-8 px-4 py-24 text-center sm:py-28">
+            <p
+              className="hero-word inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/10 px-5 py-2 font-inter text-[10px] font-semibold uppercase tracking-[0.35em] text-[#DEF6AF] backdrop-blur-md sm:text-[11px]"
+              style={{ animationDelay: "80ms" }}
             >
-              <span className="font-inter text-xl text-[#FAFAFA] sm:text-2xl">
-                EXPLORE NOW
+              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#349B43]" />
+              Apo&apos;s Pride
+            </p>
+
+            <h1 className="font-inter font-black text-white">
+              <span
+                className="hero-word block text-lg tracking-[0.5em] text-[#DEF6AF] sm:text-2xl lg:text-3xl"
+                style={{ animationDelay: "180ms" }}
+              >
+                WELCOME TO
               </span>
-            </Link>
+              <span className="mt-3 block text-5xl leading-[0.95] sm:text-7xl lg:text-[104px]">
+                <span
+                  className="hero-word"
+                  style={{ animationDelay: "300ms" }}
+                >
+                  OLONGAPO
+                </span>{" "}
+                <span
+                  className="hero-word text-gradient"
+                  style={{ animationDelay: "440ms" }}
+                >
+                  CITY
+                </span>
+              </span>
+            </h1>
+
+            <p
+              className="hero-word max-w-2xl font-merienda text-base text-[#DCE8D8] sm:text-xl lg:text-2xl"
+              style={{ animationDelay: "560ms" }}
+            >
+              A city of beauty and pride — discover its people, its places, and
+              the community that keeps it moving.
+            </p>
+
+            <div
+              className="hero-word flex flex-col items-center gap-4 sm:flex-row"
+              style={{ animationDelay: "680ms" }}
+            >
+              <Link
+                to="/tourist-spots"
+                className="btn-shine group inline-flex items-center gap-3 rounded-full bg-[#349B43] px-8 py-3.5 font-inter text-base font-bold text-white shadow-lg shadow-[#349B43]/30 transition-all duration-300 hover:-translate-y-1 hover:bg-[#2B8038] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#DEF6AF] sm:text-lg"
+              >
+                EXPLORE NOW
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden="true"
+                  className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
+                >
+                  <path
+                    d="M5 12h14M13 6l6 6-6 6"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </Link>
+
+              <Link
+                to="/about"
+                className="group inline-flex items-center gap-3 rounded-full border border-white/30 bg-white/5 px-8 py-3.5 font-inter text-base font-bold text-white backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-[#DEF6AF]/60 hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#DEF6AF] sm:text-lg"
+              >
+                LEARN MORE
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden="true"
+                  className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
+                >
+                  <path
+                    d="M5 12h14M13 6l6 6-6 6"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </Link>
+            </div>
+          </div>
+
+          <div
+            aria-hidden="true"
+            className="absolute bottom-7 left-1/2 -translate-x-1/2"
+          >
+            <div className="scroll-cue flex h-10 w-6 items-start justify-center rounded-full border-2 border-white/40 p-1.5">
+              <span className="scroll-cue-dot h-1.5 w-1.5 rounded-full bg-[#DEF6AF]" />
+            </div>
           </div>
         </section>
 
-        <section className="relative overflow-hidden bg-[#566859]">
-          <img
-            src={ulongapoImg}
-            alt="Ulongapo heritage background"
-            className="absolute inset-0 h-full w-full object-cover"
-          />
-          <div className="absolute inset-0 bg-[rgba(35,55,38,0.75)]" />
-
-          <div className="relative mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 px-4 py-8 sm:py-12 lg:grid-cols-2 lg:items-center">
-            <div className="flex flex-col gap-6">
-              <h2 className="font-merienda text-2xl font-extrabold text-[#FFF] sm:text-[32px]">
-                A CITY OF BEAUTY AND PRIDE
-              </h2>
-              <p className="font-merienda text-xl text-[#FFF] sm:text-2xl">
-                It is geographically situated and grouped under the province of
-                Zambales by the Philippine Statistics Authority but governed
-                independently and is also its largest city. Portions of the city
-                also form part of the Subic Special Economic and Freeport Zone.
-              </p>
-              <Link
-                to="/about"
-                className="inline-block w-fit rounded-[20px] bg-[#349B43] px-8 py-3 transition-colors hover:bg-[#2b8038] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FAFAFA]"
+        {/* Stats */}
+        <section className="relative overflow-hidden bg-[#233726]">
+          <div className="mx-auto grid w-full max-w-7xl grid-cols-2 gap-y-8 px-4 py-10 sm:grid-cols-4 sm:py-12">
+            {stats.map((stat, index) => (
+              <Reveal
+                key={stat.label}
+                delay={index * 90}
+                className="flex flex-col items-center gap-1 border-[#DEF6AF]/10 text-center sm:border-l sm:first:border-l-0"
               >
-                <span className="font-inter text-xl text-[#FAFAFA] sm:text-2xl">
+                <p className="font-inter text-4xl font-black text-[#DEF6AF] sm:text-5xl">
+                  <CountUp end={stat.value} suffix={stat.suffix} />
+                </p>
+                <p className="font-inter text-[10px] font-semibold uppercase tracking-[0.25em] text-[#9FB59C] sm:text-xs">
+                  {stat.label}
+                </p>
+              </Reveal>
+            ))}
+          </div>
+        </section>
+
+        {/* Marquee ribbon */}
+        <div className="marquee overflow-hidden border-y border-[#233726]/10 bg-[#DEF6AF] py-3">
+          <div className="marquee-track">
+            {[0, 1].map((copy) => (
+              <div
+                key={copy}
+                aria-hidden={copy === 1}
+                className="flex shrink-0 items-center"
+              >
+                {marqueeWords.map((word) => (
+                  <span
+                    key={`${copy}-${word}`}
+                    className="flex items-center font-inter text-xs font-bold uppercase tracking-[0.3em] text-[#233726] sm:text-sm"
+                  >
+                    <span className="px-6">{word}</span>
+                    <span className="text-[#349B43]">✦</span>
+                  </span>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* About the city */}
+        <section className="relative overflow-hidden bg-[#F7F4EA]">
+          <div className="mx-auto grid w-full max-w-7xl items-center gap-12 px-4 py-16 sm:py-20 lg:grid-cols-2">
+            <div className="flex flex-col gap-6">
+              <Reveal>
+                <p className="font-inter text-xs font-bold uppercase tracking-[0.35em] text-[#349B43]">
+                  About the city
+                </p>
+              </Reveal>
+              <Reveal delay={80}>
+                <h2 className="font-merienda text-3xl font-extrabold leading-tight text-[#233726] sm:text-4xl lg:text-5xl">
+                  <span className="heading-line">
+                    A CITY OF BEAUTY AND PRIDE
+                  </span>
+                </h2>
+              </Reveal>
+              <Reveal delay={160}>
+                <p className="max-w-xl font-merienda text-lg leading-relaxed text-[#41503f] sm:text-xl">
+                  It is geographically situated and grouped under the province
+                  of Zambales by the Philippine Statistics Authority but governed
+                  independently and is also its largest city. Portions of the
+                  city also form part of the Subic Special Economic and Freeport
+                  Zone.
+                </p>
+              </Reveal>
+              <Reveal delay={240}>
+                <Link
+                  to="/about"
+                  className="btn-shine group inline-flex w-fit items-center gap-3 rounded-full bg-[#233726] px-7 py-3 font-inter text-sm font-bold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#349B43] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#349B43] sm:text-base"
+                >
                   LEARN MORE
-                </span>
-              </Link>
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    aria-hidden="true"
+                    className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+                  >
+                    <path
+                      d="M5 12h14M13 6l6 6-6 6"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </Link>
+              </Reveal>
             </div>
 
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
-              {cityImages.map((image) => (
-                <div
-                  key={image.alt}
-                  className={
-                    image.framed ? "rounded-[45px] bg-[#D9D9D9] p-3" : ""
-                  }
-                >
-                  <div
-                    className={
-                      image.framed ? "rounded-[45px] bg-[#C5C5C5] p-3" : ""
-                    }
-                  >
-                    <img
-                      src={image.src}
-                      alt={image.alt}
-                      className="h-72 w-full rounded-[45px] object-cover"
-                    />
-                  </div>
+            <div className="grid grid-cols-2 gap-4 sm:gap-6">
+              <Reveal variant="right" className="col-span-2">
+                <div className="group overflow-hidden rounded-[28px] shadow-xl shadow-[#233726]/15">
+                  <img
+                    src={jeepImg}
+                    alt="Olongapo City Jeepney"
+                    className="img-zoom h-44 w-full object-cover sm:h-64"
+                  />
                 </div>
+              </Reveal>
+              <Reveal variant="right" delay={120}>
+                <div className="group overflow-hidden rounded-[28px] shadow-xl shadow-[#233726]/15">
+                  <img
+                    src={cityhallImg}
+                    alt="Olongapo City Hall"
+                    className="img-zoom h-40 w-full object-cover sm:h-56"
+                  />
+                </div>
+              </Reveal>
+              <Reveal variant="right" delay={220} className="mt-8">
+                <div className="group overflow-hidden rounded-[28px] shadow-xl shadow-[#233726]/15">
+                  <img
+                    src={rotondaImg}
+                    alt="Olongapo City Rotonda"
+                    className="img-zoom h-40 w-full object-cover sm:h-56"
+                  />
+                </div>
+              </Reveal>
+            </div>
+          </div>
+        </section>
+
+        {/* Quick links */}
+        <section className="relative overflow-hidden bg-[#FFF] py-16 sm:py-20">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-24 top-0 h-72 w-72 rounded-full bg-[#DEF6AF]/40 blur-3xl"
+          />
+          <div className="relative mx-auto w-full max-w-7xl px-4">
+            <Reveal className="mb-10 flex flex-col gap-3">
+              <p className="font-inter text-xs font-bold uppercase tracking-[0.35em] text-[#349B43]">
+                Keep exploring
+              </p>
+              <h2 className="font-merienda text-3xl font-extrabold text-[#233726] sm:text-4xl">
+                MORE TO DISCOVER
+              </h2>
+            </Reveal>
+
+            <div className="grid gap-6 md:grid-cols-3">
+              {quickLinks.map((link, index) => (
+                <Reveal key={link.to} delay={index * 110}>
+                  <Link
+                    to={link.to}
+                    onPointerMove={handleSpotlight}
+                    className="spotlight group card-lift flex h-full flex-col justify-between gap-8 rounded-[28px] border border-[#233726]/10 bg-[#F7F4EA] p-6 hover:bg-[#233726] hover:shadow-2xl hover:shadow-[#233726]/25 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#349B43] sm:p-8"
+                  >
+                    <div className="flex flex-col gap-4">
+                      <span className="font-inter text-xs font-bold tracking-[0.3em] text-[#349B43] transition-colors group-hover:text-[#DEF6AF]">
+                        0{index + 1}
+                      </span>
+                      <h3 className="font-merienda text-2xl font-extrabold text-[#233726] transition-colors group-hover:text-[#FFF]">
+                        {link.title}
+                      </h3>
+                      <p className="font-inter text-sm leading-relaxed text-[#5B6B59] transition-colors group-hover:text-[#C9D8C6]">
+                        {link.text}
+                      </p>
+                    </div>
+                    <span className="grid h-11 w-11 place-items-center rounded-full bg-[#233726] text-[#DEF6AF] transition-all duration-300 group-hover:translate-x-1 group-hover:bg-[#349B43] group-hover:text-white">
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        aria-hidden="true"
+                        className="h-5 w-5"
+                      >
+                        <path
+                          d="M5 12h14M13 6l6 6-6 6"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </span>
+                  </Link>
+                </Reveal>
               ))}
             </div>
           </div>
         </section>
+
+        {/* Heritage strip */}
+        <section className="relative isolate overflow-hidden bg-[#566859]">
+          <img
+            src={ulongapoImg}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 -z-10 h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 -z-10 bg-[rgba(35,55,38,0.82)]" />
+          <div className="mx-auto flex w-full max-w-4xl flex-col items-center gap-5 px-4 py-16 text-center sm:py-20">
+            <Reveal>
+              <p className="font-inter text-xs font-bold uppercase tracking-[0.35em] text-[#DEF6AF]">
+                Our home
+              </p>
+            </Reveal>
+            <Reveal delay={100}>
+              <p className="font-merienda text-2xl font-bold text-[#FFF] sm:text-4xl">
+                &ldquo;BAWAL ANG TAMAD SA OLONGAPO&rdquo;
+              </p>
+            </Reveal>
+            <Reveal delay={200}>
+              <p className="max-w-2xl font-inter text-sm leading-relaxed text-[#C9D8C6] sm:text-base">
+                A reminder of the hard work and community spirit that built this
+                city — and the pride that keeps it moving forward.
+              </p>
+            </Reveal>
+          </div>
+        </section>
       </main>
+
+      <Footer />
     </div>
   );
 }

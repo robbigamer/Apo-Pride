@@ -1,4 +1,7 @@
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import PageHero from "../components/PageHero";
+import Reveal from "../components/Reveal";
 
 const rules = [
   {
@@ -33,48 +36,86 @@ export default function CityRules() {
     <div className="flex min-h-screen flex-col bg-[#FFF]">
       <Navbar active="CITY RULES" />
 
-      <main className="flex flex-1 flex-col">
-        {/* Header Section */}
-        <section className="bg-[#566859] py-8 sm:py-12">
-          <div className="mx-auto w-full max-w-7xl px-4 text-center">
-            <h1 className="font-merienda text-4xl font-semibold text-[#FFF] sm:text-5xl lg:text-[64px]">
-              OUR CITY RULES
-            </h1>
-          </div>
-        </section>
+      <main id="main-content" className="flex flex-1 flex-col">
+        <PageHero
+          eyebrow="Keep our city orderly"
+          title="OUR CITY RULES"
+          description="Simple ordinances that keep Olongapo clean, safe, and welcoming for everyone."
+          align="center"
+        />
 
-        {/* Rules Grid */}
-        <section className="flex-1 bg-[rgba(1,1,1,0.05)] py-8 sm:py-12">
-          <div className="mx-auto w-full max-w-7xl px-4">
+        <section className="relative flex-1 overflow-hidden bg-[#F7F4EA] py-14 sm:py-20">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-24 top-16 h-72 w-72 rounded-full bg-[#DEF6AF]/50 blur-3xl"
+          />
+          <div className="relative mx-auto w-full max-w-7xl px-4">
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {rules.map((rule) => (
-                <article
-                  key={rule.title}
-                  className="flex flex-col items-center gap-6 rounded-[20px] bg-[#FFF] p-6 text-center shadow-sm sm:p-8"
-                >
-                  <img
-                    src={rule.src}
-                    alt={rule.alt}
-                    className="h-24 w-24 object-contain sm:h-28 sm:w-28"
-                  />
-                  <h2 className="font-merienda text-xl font-bold text-[#233726] sm:text-2xl">
-                    {rule.title}
-                  </h2>
-                </article>
+              {rules.map((rule, index) => (
+                <Reveal key={rule.title} delay={(index % 3) * 100}>
+                  <article className="group card-lift relative flex h-full flex-col items-center gap-6 overflow-hidden rounded-[28px] border border-[#233726]/10 bg-[#FFF] p-7 text-center shadow-sm hover:border-[#349B43]/40 hover:shadow-2xl hover:shadow-[#233726]/15 sm:p-8">
+                    <span
+                      aria-hidden="true"
+                      className="absolute right-5 top-4 font-inter text-4xl font-black text-[#233726]/5 transition-colors duration-500 group-hover:text-[#349B43]/15 sm:text-5xl"
+                    >
+                      0{index + 1}
+                    </span>
+
+                    <span className="grid h-24 w-24 place-items-center rounded-full bg-[#F7F4EA] ring-1 ring-[#233726]/5 transition-all duration-500 group-hover:-rotate-3 group-hover:bg-[#DEF6AF]/60 sm:h-28 sm:w-28">
+                      <img
+                        src={rule.src}
+                        alt={rule.alt}
+                        className="h-16 w-16 object-contain sm:h-20 sm:w-20"
+                      />
+                    </span>
+
+                    <h2 className="font-merienda text-xl font-bold text-[#233726] sm:text-2xl">
+                      {rule.title}
+                    </h2>
+
+                    <span
+                      aria-hidden="true"
+                      className="mt-auto h-1 w-10 rounded-full bg-[#349B43]/30 transition-all duration-500 group-hover:w-16 group-hover:bg-[#349B43]"
+                    />
+                  </article>
+                </Reveal>
               ))}
+
+              <Reveal delay={200}>
+                <article className="flex h-full flex-col justify-center gap-4 rounded-[28px] border border-[#349B43]/30 bg-[#233726] p-8 text-center">
+                  <p className="font-inter text-[10px] font-bold uppercase tracking-[0.3em] text-[#DEF6AF]">
+                    Remember
+                  </p>
+                  <p className="font-merienda text-2xl font-extrabold leading-snug text-[#FFF]">
+                    Discipline starts with every citizen.
+                  </p>
+                  <p className="font-inter text-sm leading-relaxed text-[#B9CBB7]">
+                    Following these rules keeps our streets, parks, and
+                    neighborhoods safe for everyone.
+                  </p>
+                </article>
+              </Reveal>
             </div>
           </div>
         </section>
 
-        {/* Footer Banner */}
-        <section className="bg-[#233726] py-8 sm:py-10">
-          <div className="mx-auto w-full max-w-7xl px-4 text-center">
+        <section className="relative isolate overflow-hidden bg-[#233726] py-12 sm:py-16">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(600px_circle_at_50%_0%,rgba(52,155,67,0.35),transparent_70%)]"
+          />
+          <Reveal className="relative mx-auto w-full max-w-7xl px-4 text-center">
             <p className="font-merienda text-2xl font-bold text-[#FFF] sm:text-3xl lg:text-4xl">
               BAWAL ANG TAMAD SA OLONGAPO
             </p>
-          </div>
+            <p className="mx-auto mt-3 max-w-xl font-inter text-sm text-[#B9CBB7]">
+              A city of beauty and pride — built by people who care.
+            </p>
+          </Reveal>
         </section>
       </main>
+
+      <Footer />
     </div>
   );
 }
