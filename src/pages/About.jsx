@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
 const mapEmbedUrl =
@@ -9,6 +10,7 @@ const features = [
     image: "/assets/spots/rizal-triangle.jpg",
     alt: "Rizal Triangle Park",
     bordered: true,
+    to: "/tourist-spots",
   },
   {
     title: "OLONGAPO CITY MAP",
@@ -21,12 +23,14 @@ const features = [
     image: "/assets/food/public-market.jpg",
     alt: "Olongapo public market food spot",
     bordered: false,
+    to: "/tourist-spots#food-spots",
   },
   {
     title: "VOLUNTARY WORKS",
     image: "/assets/voluntary/voluntary-works.jpg",
     alt: "Voluntary works in Olongapo City",
     bordered: false,
+    to: "/voluntary-works",
   },
 ];
 
@@ -54,34 +58,57 @@ export default function About() {
           </div>
 
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
-            {features.map((feature) => (
-              <article
-                key={feature.title}
-                className="flex flex-col gap-4 rounded-[20px] bg-[#85B48C]/40 p-4 sm:p-6"
-              >
-                <h2 className="font-merienda text-3xl font-bold text-[#FFF] sm:text-5xl">
-                  {feature.title}
-                </h2>
-                {feature.map ? (
-                  <iframe
-                    src={mapEmbedUrl}
-                    title="Olongapo City Map"
-                    className="h-56 w-full rounded-[20px] border-0 sm:h-72"
-                    loading="lazy"
-                    allowFullScreen
-                    referrerPolicy="no-referrer-when-downgrade"
-                  />
-                ) : (
-                  <img
-                    src={feature.image}
-                    alt={feature.alt}
-                    className={`h-56 w-full rounded-[20px] object-cover sm:h-72 ${
-                      feature.bordered ? "border border-[#000]" : ""
-                    }`}
-                  />
-                )}
-              </article>
-            ))}
+            {features.map((feature) => {
+              const cardClass =
+                "flex flex-col gap-4 rounded-[20px] bg-[#85B48C]/40 p-4 transition-colors sm:p-6";
+              const content = (
+                <>
+                  <h2 className="font-merienda text-3xl font-bold text-[#FFF] sm:text-5xl">
+                    {feature.title}
+                  </h2>
+                  {feature.map ? (
+                    <iframe
+                      src={mapEmbedUrl}
+                      title="Olongapo City Map"
+                      className="h-56 w-full rounded-[20px] border-0 sm:h-72"
+                      loading="lazy"
+                      allowFullScreen
+                      referrerPolicy="no-referrer-when-downgrade"
+                    />
+                  ) : (
+                    <span className="overflow-hidden rounded-[20px]">
+                      <img
+                        src={feature.image}
+                        alt={feature.alt}
+                        className={`h-56 w-full rounded-[20px] object-cover sm:h-72 ${
+                          feature.to
+                            ? "transition-transform duration-300 group-hover:scale-105"
+                            : ""
+                        } ${feature.bordered ? "border border-[#000]" : ""}`}
+                      />
+                    </span>
+                  )}
+                </>
+              );
+
+              if (!feature.to) {
+                return (
+                  <article key={feature.title} className={cardClass}>
+                    {content}
+                  </article>
+                );
+              }
+
+              return (
+                <Link
+                  key={feature.title}
+                  to={feature.to}
+                  className={`${cardClass} group hover:bg-[#85B48C]/60 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#FFF]`}
+                >
+                  {content}
+                </Link>
+              );
+            })}
           </div>
         </div>
       </main>

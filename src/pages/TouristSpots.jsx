@@ -1,6 +1,18 @@
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
 export default function OlongapoTouristSpotsDining() {
+  const { hash } = useLocation();
+
+  useEffect(() => {
+    if (!hash) return;
+    const target = document.getElementById(hash.slice(1));
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [hash]);
+
   return (
     <div className="flex min-h-screen flex-col bg-[#FFF]">
       <Navbar active="ABOUT" />
@@ -93,7 +105,10 @@ export default function OlongapoTouristSpotsDining() {
           </div>
         </section>
 
-        <section className="relative overflow-hidden bg-[#695041]/60">
+        <section
+          id="food-spots"
+          className="relative overflow-hidden bg-[#695041]/60"
+        >
           <img
             src="/assets/food/wimpys.jpg"
             alt="Wimpy's Restaurant Olongapo"

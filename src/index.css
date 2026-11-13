@@ -12,6 +12,19 @@
   --font-grandstander: cursive;
 }
 
+html {
+  zoom: 0.85;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 :root {
   --text: #6b6375;
   --text-h: #08060d;
@@ -73,10 +86,14 @@ body {
   max-width: none;
   margin: 0;
   text-align: left;
-  min-height: 100svh;
+  min-height: calc(100svh / 0.85);
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+}
+
+#root > * {
+  flex: 1 0 auto;
 }
 
 @layer base {

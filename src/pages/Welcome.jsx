@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import birdviewImg from "../img/birdview.jpg";
 import cityhallImg from "../img/cityhall.jpg";
@@ -41,11 +42,14 @@ export default function Welcome() {
             <h1 className="font-inter text-4xl font-black text-[#FAFAFA] sm:text-5xl lg:text-[64px]">
               WELCOME TO OLONGAPO CITY
             </h1>
-            <div className="rounded-[20px] border border-[#233726] bg-[#349B43] px-8 py-3">
-              <p className="font-inter text-xl text-[#FAFAFA] sm:text-2xl">
+            <Link
+              to="/tourist-spots"
+              className="inline-block rounded-[20px] border border-[#233726] bg-[#349B43] px-8 py-3 transition-colors hover:bg-[#2b8038] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FAFAFA]"
+            >
+              <span className="font-inter text-xl text-[#FAFAFA] sm:text-2xl">
                 EXPLORE NOW
-              </p>
-            </div>
+              </span>
+            </Link>
           </div>
         </section>
 
@@ -68,11 +72,14 @@ export default function Welcome() {
                 independently and is also its largest city. Portions of the city
                 also form part of the Subic Special Economic and Freeport Zone.
               </p>
-              <div className="w-fit rounded-[20px] bg-[#349B43] px-8 py-3">
-                <p className="font-inter text-xl text-[#FAFAFA] sm:text-2xl">
+              <Link
+                to="/about"
+                className="inline-block w-fit rounded-[20px] bg-[#349B43] px-8 py-3 transition-colors hover:bg-[#2b8038] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FAFAFA]"
+              >
+                <span className="font-inter text-xl text-[#FAFAFA] sm:text-2xl">
                   LEARN MORE
-                </p>
-              </div>
+                </span>
+              </Link>
             </div>
 
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
