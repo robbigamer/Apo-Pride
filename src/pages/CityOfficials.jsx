@@ -155,11 +155,11 @@ export default function CityOfficials() {
               {councilors.map((councilor, index) => (
                 <Reveal key={`${councilor.src}-${index}`} delay={(index % 3) * 90}>
                   <article className="group card-lift flex h-full flex-col overflow-hidden rounded-[24px] border border-[#233726]/10 bg-[#FFF] shadow-sm hover:shadow-xl hover:shadow-[#233726]/15">
-                    <div className="relative overflow-hidden bg-[#F7F4EA]">
+                    <div className="relative overflow-hidden bg-[#FFF] p-3">
                       <img
                         src={councilor.src}
                         alt={councilor.alt}
-                        className="img-zoom h-56 w-full object-contain sm:h-64"
+                        className="img-zoom h-56 w-full rounded-2xl object-contain sm:h-64"
                       />
                       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#142116]/70 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                     </div>
