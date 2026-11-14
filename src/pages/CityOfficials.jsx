@@ -130,6 +130,16 @@ export default function CityOfficials() {
           alt="Atty. Rolen C. Paulino Jr."
         />
 
+        <LeaderSection
+          reverse
+          badge="Vice Mayor"
+          name="KAYE ANN SIOSON LEGASPI"
+          bio="Is the current Vice Mayor of Olongapo City, having assumed office on June 30, 2025. Before becoming vice mayor, she served as an Olongapo City Councilor from 2019 to 2025. She is known for her involvement in youth programs, public service, and chess advocacy. Her experience in public service continues to support her role in serving the people of Olongapo City."
+          image={viceMayorImg}
+          alt="Kaye Ann Sioson Legaspi"
+          maxWidth="368px"
+        />
+
         <section className="relative overflow-hidden bg-[#F7F4EA] py-14 sm:py-20">
           <div className="mx-auto w-full max-w-7xl px-4">
             <Reveal className="mb-10 flex flex-col gap-3 text-center sm:items-center">
@@ -145,11 +155,11 @@ export default function CityOfficials() {
               {councilors.map((councilor, index) => (
                 <Reveal key={`${councilor.src}-${index}`} delay={(index % 3) * 90}>
                   <article className="group card-lift flex h-full flex-col overflow-hidden rounded-[24px] border border-[#233726]/10 bg-[#FFF] shadow-sm hover:shadow-xl hover:shadow-[#233726]/15">
-                    <div className="relative overflow-hidden">
+                    <div className="relative overflow-hidden bg-[#F7F4EA]">
                       <img
                         src={councilor.src}
                         alt={councilor.alt}
-                        className="img-zoom h-56 w-full object-cover sm:h-64"
+                        className="img-zoom h-56 w-full object-contain sm:h-64"
                       />
                       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#142116]/70 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                     </div>
@@ -168,16 +178,6 @@ export default function CityOfficials() {
             </div>
           </div>
         </section>
-
-        <LeaderSection
-          reverse
-          badge="Vice Mayor"
-          name="KAYE ANN SIOSON LEGASPI"
-          bio="Is the current Vice Mayor of Olongapo City, having assumed office on June 30, 2025. Before becoming vice mayor, she served as an Olongapo City Councilor from 2019 to 2025. She is known for her involvement in youth programs, public service, and chess advocacy. Her experience in public service continues to support her role in serving the people of Olongapo City."
-          image={viceMayorImg}
-          alt="Kaye Ann Sioson Legaspi"
-          maxWidth="368px"
-        />
       </main>
 
       <Footer />
