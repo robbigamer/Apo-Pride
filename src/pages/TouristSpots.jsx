@@ -3,6 +3,9 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import PageHero from "../components/PageHero";
 import Reveal from "../components/Reveal";
+import harborPointImg from "../img/harborpoint.webp";
+import meetAndEatImg from "../img/meetandeat.jpg";
+import smCityImg from "../img/SMcity.jpeg";
 
 const spots = [
   {
@@ -22,7 +25,7 @@ const spots = [
     title: "SM CITY OLONGAPO CENTRAL",
     description:
       "It is the second SM Supermall in Zambales and the second SM Supermall in Olongapo after SM City Olongapo Downtown",
-    image: "/assets/food/screenshot-224606.png",
+    image: smCityImg,
     alt: "SM City Olongapo Central",
     card: "bg-[rgba(107,106,106,0.92)] ring-1 ring-white/20",
     heading:
@@ -34,7 +37,7 @@ const spots = [
     title: "HARBOR POINT",
     description:
       "Located in Subic Bay Freeport Zone, Ayala Malls Harbor Point Cinemas offer a relaxing movie experience for locals and tourists alike.",
-    image: "/assets/food/unnamed.webp",
+    image: harborPointImg,
     alt: "Harbor Point",
     card: "bg-[rgba(78,55,20,0.9)] ring-1 ring-[#FFBD53]/25",
     heading:
@@ -81,7 +84,7 @@ const spots = [
     title: "SUNDAE BREW",
     description:
       "Located in rizal avenue and near columban, sundae brew offers a cheap alternative to coffee, milk tea and meals.",
-    image: "/assets/food/breadtalk.jpg",
+    image: "/assets/food/screenshot-224606.png",
     alt: "Sundae Brew",
     card: "bg-[rgba(21,22,56,0.72)] ring-1 ring-white/20",
     heading: "text-4xl text-[#FFF] sm:text-[55px]",
@@ -92,7 +95,7 @@ const spots = [
     title: "MEET AND EAT",
     description:
       "The Meet and Eat buffet in Olongapo offers a diverse selection of unlimited dishes perfect for food lovers.",
-    image: "/assets/food/market-food-spot.jpg",
+    image: meetAndEatImg,
     alt: "Meet and Eat",
     card: "bg-[rgba(221,210,90,0.7)] ring-1 ring-[#4A1A00]/20",
     heading:
