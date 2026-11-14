@@ -47,7 +47,7 @@ export default function Navbar() {
                   <Link
                     to={to}
                     aria-current={isActive ? "page" : undefined}
-                    className={`relative whitespace-nowrap font-merienda text-[11px] font-bold tracking-[-0.01em] transition-colors duration-300 after:absolute after:-bottom-1 after:left-0 after:h-[3px] after:w-full after:origin-left after:scale-x-0 after:bg-[#349B43] after:transition-transform after:duration-300 hover:text-[#233726] hover:after:scale-x-100 sm:text-sm md:text-lg lg:text-xl xl:text-2xl ${
+                    className={`relative inline-flex items-center whitespace-nowrap pb-[5px] font-merienda text-[11px] font-bold tracking-[-0.01em] transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:h-[3px] after:w-full after:origin-left after:scale-x-0 after:bg-[#349B43] after:transition-transform after:duration-300 hover:text-[#233726] hover:after:scale-x-100 sm:text-sm md:text-lg lg:text-xl xl:text-2xl ${
                       isActive
                         ? "text-[#233726] after:scale-x-100"
                         : "text-[#000]"

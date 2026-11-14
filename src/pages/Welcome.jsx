@@ -101,10 +101,10 @@ export default function Welcome() {
                   OLONGAPO
                 </span>{" "}
                 <span
-                  className="hero-word text-gradient"
+                  className="hero-word"
                   style={{ animationDelay: "440ms" }}
                 >
-                  CITY
+                  <span className="text-gradient">CITY</span>
                 </span>
               </span>
             </h1>
