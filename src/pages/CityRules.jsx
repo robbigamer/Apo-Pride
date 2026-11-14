@@ -76,21 +76,6 @@ export default function CityRules() {
                   </article>
                 </Reveal>
               ))}
-
-              <Reveal delay={200}>
-                <article className="flex h-full flex-col justify-center gap-4 rounded-[28px] border border-[#349B43]/30 bg-[#233726] p-8 text-center">
-                  <p className="font-inter text-[10px] font-bold uppercase tracking-[0.3em] text-[#DEF6AF]">
-                    Remember
-                  </p>
-                  <p className="font-merienda text-2xl font-extrabold leading-snug text-[#FFF]">
-                    Discipline starts with every citizen.
-                  </p>
-                  <p className="font-inter text-sm leading-relaxed text-[#B9CBB7]">
-                    Following these rules keeps our streets, parks, and
-                    neighborhoods safe for everyone.
-                  </p>
-                </article>
-              </Reveal>
             </div>
           </div>
         </section>

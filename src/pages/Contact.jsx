@@ -60,7 +60,7 @@ export default function Contact() {
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
               {contacts.map((contact, index) => (
                 <Reveal key={contact.title} delay={(index % 3) * 90}>
-                  <div className="group card-lift flex h-full min-h-[220px] flex-col gap-5 rounded-[32px] border border-white/10 bg-[rgba(121,72,70,0.82)] p-7 shadow-lg shadow-black/20 backdrop-blur-sm hover:border-[#FFBD53]/40 hover:bg-[rgba(140,84,82,0.92)] sm:p-8">
+                  <div className="group card-lift flex h-full min-h-[220px] flex-col gap-5 rounded-[32px] border border-white/10 bg-[rgba(121,72,70,0.82)] p-7 shadow-lg shadow-black/20 hover:border-[#FFBD53]/40 hover:bg-[rgba(140,84,82,0.92)] sm:p-8">
                     <span className="grid h-11 w-11 place-items-center rounded-full bg-[#FFE9E9]/10 text-[#FFE9E9] transition-colors duration-300 group-hover:bg-[#FFBD53] group-hover:text-[#3C1515]">
                       <PhoneIcon />
                     </span>

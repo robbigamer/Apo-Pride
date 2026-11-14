@@ -65,7 +65,7 @@ export default function VoluntaryWorks() {
                 className={work.align === "right" ? "ml-auto" : ""}
               >
                 <div
-                  className={`flex max-w-2xl flex-col gap-4 rounded-[28px] p-6 shadow-2xl shadow-black/20 backdrop-blur-sm transition-transform duration-500 group-hover:-translate-y-1 sm:p-8 ${work.card}`}
+                  className={`flex max-w-2xl flex-col gap-4 rounded-[28px] p-6 shadow-2xl shadow-black/20 transition-transform duration-500 group-hover:-translate-y-1 sm:p-8 ${work.card}`}
                 >
                   <span className="inline-flex w-fit items-center gap-2 rounded-full bg-white/15 px-3 py-1 font-inter text-[9px] font-bold uppercase tracking-[0.3em] text-white/90">
                     <span className="h-1 w-1 rounded-full bg-current" />

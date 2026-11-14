@@ -78,7 +78,7 @@ export default function Welcome() {
           />
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute right-[8%] top-[26%] h-44 w-44 animate-float-slow rounded-full bg-[#349B43]/20 blur-2xl"
+            className="pointer-events-none absolute right-[8%] top-[26%] h-44 w-44 animate-float-slow rounded-full bg-[radial-gradient(circle,rgba(52,155,67,0.35),transparent_70%)]"
           />
           <div
             aria-hidden="true"
@@ -144,7 +144,7 @@ export default function Welcome() {
 
               <Link
                 to="/about"
-                className="group inline-flex min-w-[210px] items-center justify-center gap-3 rounded-full border border-white/30 bg-white/5 px-8 py-3.5 font-inter text-base font-bold text-white backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-[#DEF6AF]/60 hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#DEF6AF] sm:w-[240px] sm:text-lg"
+                className="group inline-flex min-w-[210px] items-center justify-center gap-3 rounded-full border border-white/30 bg-white/5 px-8 py-3.5 font-inter text-base font-bold text-white transition-all duration-300 hover:-translate-y-1 hover:border-[#DEF6AF]/60 hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#DEF6AF] sm:w-[240px] sm:text-lg"
               >
                 LEARN MORE
                 <svg
@@ -352,20 +352,9 @@ export default function Welcome() {
           />
           <div className="absolute inset-0 -z-10 bg-[rgba(35,55,38,0.82)]" />
           <div className="mx-auto flex w-full max-w-4xl flex-col items-center gap-5 px-4 py-16 text-center sm:py-20">
-            <Reveal>
-              <p className="font-inter text-xs font-bold uppercase tracking-[0.35em] text-[#DEF6AF]">
-                Our home
-              </p>
-            </Reveal>
             <Reveal delay={100}>
               <p className="font-merienda text-2xl font-bold text-[#FFF] sm:text-4xl">
                 &ldquo;BAWAL ANG TAMAD SA OLONGAPO&rdquo;
-              </p>
-            </Reveal>
-            <Reveal delay={200}>
-              <p className="max-w-2xl font-inter text-sm leading-relaxed text-[#C9D8C6] sm:text-base">
-                A reminder of the hard work and community spirit that built this
-                city — and the pride that keeps it moving forward.
               </p>
             </Reveal>
           </div>

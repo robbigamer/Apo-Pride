@@ -57,8 +57,7 @@ const councilors = [
 
 function RoleBadge({ children }) {
   return (
-    <span className="inline-flex w-fit items-center gap-2 rounded-full border border-[#349B43]/40 bg-[#349B43]/10 px-4 py-1.5 font-inter text-[10px] font-bold uppercase tracking-[0.3em] text-[#2B8038] sm:text-xs">
-      <span className="h-1.5 w-1.5 rounded-full bg-[#349B43]" />
+    <span className="inline-flex w-fit items-center font-inter text-[10px] font-bold uppercase tracking-[0.3em] text-[#2B8038] sm:text-xs">
       {children}
     </span>
   );

@@ -114,8 +114,8 @@ const spots = [
     overlay: "bg-[rgba(107,94,59,0.37)]",
     card: "bg-[rgba(221,210,90,0.7)] ring-1 ring-[#4A1A00]/20",
     heading:
-      "font-grandstander text-4xl font-bold text-[#4A1A00] sm:text-[64px]",
-    body: "font-grandstander text-xl text-[#4A1A00] sm:text-4xl",
+      "font-merienda text-4xl font-bold text-[#4A1A00] sm:text-[64px]",
+    body: "font-inter text-xl text-[#4A1A00] sm:text-2xl",
     align: "right",
     food: true,
   },
@@ -153,7 +153,7 @@ function SpotSection({ spot }) {
           className={spot.align === "right" ? "ml-auto" : ""}
         >
           <div
-            className={`flex max-w-2xl flex-col gap-4 rounded-[28px] p-6 shadow-2xl shadow-black/20 backdrop-blur-sm transition-transform duration-500 group-hover:-translate-y-1 sm:p-8 ${spot.card}`}
+            className={`flex max-w-2xl flex-col gap-4 rounded-[28px] p-6 shadow-2xl shadow-black/20 transition-transform duration-500 group-hover:-translate-y-1 sm:p-8 ${spot.card}`}
           >
             <span className="inline-flex w-fit items-center gap-2 rounded-full bg-white/10 px-3 py-1 font-inter text-[9px] font-bold uppercase tracking-[0.3em] text-white/80">
               {spot.food ? "Food spot" : "Tourist spot"}
