@@ -5,7 +5,6 @@ import Reveal from "./Reveal";
  * Keeps the animated forest-gradient look consistent site-wide.
  */
 export default function PageHero({
-  eyebrow,
   title,
   description,
   image,
@@ -42,15 +41,6 @@ export default function PageHero({
 
       <div className="relative mx-auto w-full max-w-7xl px-4 py-14 sm:py-20">
         <div className={`flex flex-col gap-5 ${alignment}`}>
-          {eyebrow ? (
-            <Reveal>
-              <p className="inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 font-inter text-[10px] font-semibold uppercase tracking-[0.35em] text-[#DEF6AF] backdrop-blur-md sm:text-[11px]">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#349B43]" />
-                {eyebrow}
-              </p>
-            </Reveal>
-          ) : null}
-
           <Reveal delay={80}>
             <h1 className="font-merienda text-4xl font-extrabold leading-tight text-[#FFF] sm:text-5xl lg:text-6xl">
               <span className="heading-line">{title}</span>

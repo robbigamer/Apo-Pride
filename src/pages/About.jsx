@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import PageHero from "../components/PageHero";
 import Reveal from "../components/Reveal";
@@ -33,13 +32,6 @@ const features = [
   },
 ];
 
-function handleSpotlight(event) {
-  const el = event.currentTarget;
-  const rect = el.getBoundingClientRect();
-  el.style.setProperty("--mx", `${event.clientX - rect.left}px`);
-  el.style.setProperty("--my", `${event.clientY - rect.top}px`);
-}
-
 function ArrowIcon() {
   return (
     <svg
@@ -61,12 +53,9 @@ function ArrowIcon() {
 
 export default function About() {
   return (
-    <div className="flex min-h-screen flex-col bg-[#FFF]">
-      <Navbar active="ABOUT" />
-
+    <div className="flex flex-1 flex-col bg-[#FFF]">
       <main id="main-content" className="flex flex-1 flex-col">
         <PageHero
-          eyebrow="Get to know us"
           title="ABOUT OLONGAPO CITY"
           description="Discover the beauty, culture, and community that make Olongapo City unique."
           image="/assets/spots/olongapo-landmarks.webp"
@@ -144,8 +133,7 @@ export default function About() {
                   <Reveal key={feature.title} delay={index * 100}>
                     <Link
                       to={feature.to}
-                      onPointerMove={handleSpotlight}
-                      className={`${cardClass} spotlight card-lift h-full hover:border-[#233726] hover:bg-[#233726] hover:shadow-2xl hover:shadow-[#233726]/25 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#349B43]`}
+                      className={`${cardClass} card-lift h-full hover:border-[#233726] hover:bg-[#233726] hover:shadow-2xl hover:shadow-[#233726]/25 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#349B43]`}
                     >
                       {content}
                     </Link>

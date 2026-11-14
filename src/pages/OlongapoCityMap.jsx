@@ -1,4 +1,3 @@
-import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import PageHero from "../components/PageHero";
 import Reveal from "../components/Reveal";
@@ -8,12 +7,9 @@ const mapEmbedUrl =
 
 export default function AboutOlongapoCityMap() {
   return (
-    <div className="flex min-h-screen flex-col bg-[#FFF]">
-      <Navbar active="ABOUT" />
-
+    <div className="flex flex-1 flex-col bg-[#FFF]">
       <main id="main-content" className="flex flex-1 flex-col">
         <PageHero
-          eyebrow="Find your way"
           title="OLONGAPO CITY MAP"
           description="Explore the city and plan your next stop around Olongapo, Zambales."
         />

@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import PageHero from "../components/PageHero";
 import Reveal from "../components/Reveal";
@@ -181,12 +180,9 @@ export default function OlongapoTouristSpotsDining() {
   }, [hash]);
 
   return (
-    <div className="flex min-h-screen flex-col bg-[#FFF]">
-      <Navbar active="ABOUT" />
-
+    <div className="flex flex-1 flex-col bg-[#FFF]">
       <main id="main-content" className="flex flex-1 flex-col">
         <PageHero
-          eyebrow="Discover Olongapo"
           title="TOURIST SPOTS IN OLONGAPO"
           description="From parks and malls to local food favorites — here is where the city comes alive."
           image="/assets/spots/olongapo-landmarks.webp"

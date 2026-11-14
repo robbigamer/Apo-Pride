@@ -1,4 +1,3 @@
-import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import PageHero from "../components/PageHero";
 import Reveal from "../components/Reveal";
@@ -33,12 +32,9 @@ const rules = [
 
 export default function CityRules() {
   return (
-    <div className="flex min-h-screen flex-col bg-[#FFF]">
-      <Navbar active="CITY RULES" />
-
+    <div className="flex flex-1 flex-col bg-[#FFF]">
       <main id="main-content" className="flex flex-1 flex-col">
         <PageHero
-          eyebrow="Keep our city orderly"
           title="OUR CITY RULES"
           description="Simple ordinances that keep Olongapo clean, safe, and welcoming for everyone."
           align="center"
@@ -107,9 +103,6 @@ export default function CityRules() {
           <Reveal className="relative mx-auto w-full max-w-7xl px-4 text-center">
             <p className="font-merienda text-2xl font-bold text-[#FFF] sm:text-3xl lg:text-4xl">
               BAWAL ANG TAMAD SA OLONGAPO
-            </p>
-            <p className="mx-auto mt-3 max-w-xl font-inter text-sm text-[#B9CBB7]">
-              A city of beauty and pride — built by people who care.
             </p>
           </Reveal>
         </section>

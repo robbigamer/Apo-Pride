@@ -1,4 +1,3 @@
-import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import PageHero from "../components/PageHero";
 import Reveal from "../components/Reveal";
@@ -38,12 +37,9 @@ const works = [
 
 export default function VoluntaryWorks() {
   return (
-    <div className="flex min-h-screen flex-col bg-[#FFF]">
-      <Navbar active="ABOUT" />
-
+    <div className="flex flex-1 flex-col bg-[#FFF]">
       <main id="main-content" className="flex flex-1 flex-col">
         <PageHero
-          eyebrow="Brigada Eskwela"
           title="VOLUNTARY WORKS IN OLONGAPO"
           description="Community-led programs that bring people together and keep the spirit of bayanihan alive."
           image="/assets/voluntary/voluntary-works.jpg"

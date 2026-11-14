@@ -119,16 +119,6 @@ export default function Footer() {
           </p>
         </div>
       </div>
-
-      <div className="relative border-t border-white/10">
-        <div className="mx-auto flex w-full max-w-7xl flex-col items-center justify-between gap-2 px-4 py-5 text-center font-inter text-xs text-[#8FA88C] sm:flex-row sm:text-left">
-          <p>© {new Date().getFullYear()} Olongapo City. All rights reserved.</p>
-          <p className="flex items-center gap-2">
-            <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#349B43]" />
-            Built with pride for Apo&apos;s Pride
-          </p>
-        </div>
-      </div>
     </footer>
   );
 }

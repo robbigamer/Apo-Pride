@@ -1,21 +1,12 @@
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Reveal from "../components/Reveal";
-import CountUp from "../components/CountUp";
 import birdviewImg from "../img/birdview.jpg";
 import cityhallImg from "../img/cityhall.jpg";
 import jeepImg from "../img/jeep.jpg";
 import rotondaImg from "../img/rotonda.jpg";
 import ulongapoImg from "../img/ulongapo.jpg";
-
-const stats = [
-  { value: 10, label: "City Councilors" },
-  { value: 5, label: "City Rules" },
-  { value: 8, label: "Spots & Eateries" },
-  { value: 24, suffix: "/7", label: "Emergency Response" },
-];
 
 const quickLinks = [
   {
@@ -42,15 +33,7 @@ const marqueeWords = [
   "SUBIC BAY FREEPORT",
 ];
 
-function handleSpotlight(event) {
-  const el = event.currentTarget;
-  const rect = el.getBoundingClientRect();
-  el.style.setProperty("--mx", `${event.clientX - rect.left}px`);
-  el.style.setProperty("--my", `${event.clientY - rect.top}px`);
-}
-
 export default function Welcome() {
-  const heroRef = useRef(null);
   const heroImageRef = useRef(null);
 
   useEffect(() => {
@@ -74,31 +57,11 @@ export default function Welcome() {
     };
   }, []);
 
-  const onHeroPointerMove = (event) => {
-    const hero = heroRef.current;
-    if (!hero) return;
-    const rect = hero.getBoundingClientRect();
-    hero.style.setProperty(
-      "--mx",
-      `${((event.clientX - rect.left) / rect.width) * 100}%`,
-    );
-    hero.style.setProperty(
-      "--my",
-      `${((event.clientY - rect.top) / rect.height) * 100}%`,
-    );
-  };
-
   return (
-    <div className="flex min-h-screen flex-col bg-[#FFF]">
-      <Navbar active="HOME" />
-
+    <div className="flex flex-1 flex-col bg-[#FFF]">
       <main id="main-content" className="flex flex-1 flex-col">
         {/* Hero */}
-        <section
-          ref={heroRef}
-          onPointerMove={onHeroPointerMove}
-          className="relative isolate flex min-h-[calc(88svh/0.85)] items-center overflow-hidden bg-[#142116]"
-        >
+        <section className="relative isolate flex min-h-[calc(88svh/0.85)] items-center overflow-hidden bg-[#142116]">
           <div className="absolute inset-0 -z-10 overflow-hidden">
             <img
               ref={heroImageRef}
@@ -107,7 +70,6 @@ export default function Welcome() {
               className="h-[112%] w-full object-cover opacity-80 will-change-transform"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-[#0C170F]/85 via-[#142116]/70 to-[#142116]" />
-            <div className="hero-glow absolute inset-0" />
           </div>
 
           <div
@@ -124,14 +86,6 @@ export default function Welcome() {
           />
 
           <div className="relative mx-auto flex w-full max-w-7xl flex-col items-center gap-8 px-4 py-24 text-center sm:py-28">
-            <p
-              className="hero-word inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/10 px-5 py-2 font-inter text-[10px] font-semibold uppercase tracking-[0.35em] text-[#DEF6AF] backdrop-blur-md sm:text-[11px]"
-              style={{ animationDelay: "80ms" }}
-            >
-              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#349B43]" />
-              Apo&apos;s Pride
-            </p>
-
             <h1 className="font-inter font-black text-white">
               <span
                 className="hero-word block text-lg tracking-[0.5em] text-[#DEF6AF] sm:text-2xl lg:text-3xl"
@@ -164,12 +118,12 @@ export default function Welcome() {
             </p>
 
             <div
-              className="hero-word flex flex-col items-center gap-4 sm:flex-row"
+              className="hero-cta flex w-full flex-col items-center justify-center gap-3 sm:flex-row sm:gap-5"
               style={{ animationDelay: "680ms" }}
             >
               <Link
                 to="/tourist-spots"
-                className="btn-shine group inline-flex items-center gap-3 rounded-full bg-[#349B43] px-8 py-3.5 font-inter text-base font-bold text-white shadow-lg shadow-[#349B43]/30 transition-all duration-300 hover:-translate-y-1 hover:bg-[#2B8038] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#DEF6AF] sm:text-lg"
+                className="btn-shine group inline-flex min-w-[210px] items-center justify-center gap-3 rounded-full border border-transparent bg-[#349B43] px-8 py-3.5 font-inter text-base font-bold text-white shadow-lg shadow-[#349B43]/30 transition-all duration-300 hover:-translate-y-1 hover:bg-[#2B8038] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#DEF6AF] sm:w-[240px] sm:text-lg"
               >
                 EXPLORE NOW
                 <svg
@@ -190,7 +144,7 @@ export default function Welcome() {
 
               <Link
                 to="/about"
-                className="group inline-flex items-center gap-3 rounded-full border border-white/30 bg-white/5 px-8 py-3.5 font-inter text-base font-bold text-white backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-[#DEF6AF]/60 hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#DEF6AF] sm:text-lg"
+                className="group inline-flex min-w-[210px] items-center justify-center gap-3 rounded-full border border-white/30 bg-white/5 px-8 py-3.5 font-inter text-base font-bold text-white backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-[#DEF6AF]/60 hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#DEF6AF] sm:w-[240px] sm:text-lg"
               >
                 LEARN MORE
                 <svg
@@ -213,31 +167,17 @@ export default function Welcome() {
 
           <div
             aria-hidden="true"
-            className="absolute bottom-7 left-1/2 -translate-x-1/2"
+            className="absolute bottom-7 left-1/2 -translate-x-1/2 text-[#DEF6AF]"
           >
-            <div className="scroll-cue flex h-10 w-6 items-start justify-center rounded-full border-2 border-white/40 p-1.5">
-              <span className="scroll-cue-dot h-1.5 w-1.5 rounded-full bg-[#DEF6AF]" />
-            </div>
-          </div>
-        </section>
-
-        {/* Stats */}
-        <section className="relative overflow-hidden bg-[#233726]">
-          <div className="mx-auto grid w-full max-w-7xl grid-cols-2 gap-y-8 px-4 py-10 sm:grid-cols-4 sm:py-12">
-            {stats.map((stat, index) => (
-              <Reveal
-                key={stat.label}
-                delay={index * 90}
-                className="flex flex-col items-center gap-1 border-[#DEF6AF]/10 text-center sm:border-l sm:first:border-l-0"
-              >
-                <p className="font-inter text-4xl font-black text-[#DEF6AF] sm:text-5xl">
-                  <CountUp end={stat.value} suffix={stat.suffix} />
-                </p>
-                <p className="font-inter text-[10px] font-semibold uppercase tracking-[0.25em] text-[#9FB59C] sm:text-xs">
-                  {stat.label}
-                </p>
-              </Reveal>
-            ))}
+            <svg viewBox="0 0 24 24" fill="none" className="h-7 w-7">
+              <path
+                d="M12 4v15M5 13l7 7 7-7"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
           </div>
         </section>
 
@@ -366,8 +306,7 @@ export default function Welcome() {
                 <Reveal key={link.to} delay={index * 110}>
                   <Link
                     to={link.to}
-                    onPointerMove={handleSpotlight}
-                    className="spotlight group card-lift flex h-full flex-col justify-between gap-8 rounded-[28px] border border-[#233726]/10 bg-[#F7F4EA] p-6 hover:bg-[#233726] hover:shadow-2xl hover:shadow-[#233726]/25 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#349B43] sm:p-8"
+                    className="group card-lift flex h-full flex-col justify-between gap-8 rounded-[28px] border border-[#233726]/10 bg-[#F7F4EA] p-6 hover:bg-[#233726] hover:shadow-2xl hover:shadow-[#233726]/25 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#349B43] sm:p-8"
                   >
                     <div className="flex flex-col gap-4">
                       <span className="font-inter text-xs font-bold tracking-[0.3em] text-[#349B43] transition-colors group-hover:text-[#DEF6AF]">

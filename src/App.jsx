@@ -8,6 +8,7 @@ import Contact from "./pages/Contact";
 import TouristSpots from "./pages/TouristSpots";
 import VoluntaryWorks from "./pages/VoluntaryWorks";
 import OlongapoCityMap from "./pages/OlongapoCityMap";
+import Navbar from "./components/Navbar";
 import ScrollProgress from "./components/ScrollProgress";
 import BackToTop from "./components/BackToTop";
 
@@ -29,7 +30,8 @@ export default function App() {
     <>
       <ScrollProgress />
       <ScrollToTop />
-      <div key={pathname} className="page-enter flex min-h-screen flex-col">
+      <Navbar />
+      <div key={pathname} className="page-enter flex flex-1 flex-col">
         <Routes>
           <Route path="/" element={<Welcome />} />
           <Route path="/about" element={<About />} />

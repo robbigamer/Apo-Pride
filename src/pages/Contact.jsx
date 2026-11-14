@@ -1,4 +1,3 @@
-import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Reveal from "../components/Reveal";
 
@@ -26,9 +25,7 @@ function PhoneIcon() {
 
 export default function Contact() {
   return (
-    <div className="flex min-h-screen flex-col bg-[#FFF]">
-      <Navbar active="CONTACT US" />
-
+    <div className="flex flex-1 flex-col bg-[#FFF]">
       <main id="main-content" className="relative flex flex-1 flex-col overflow-hidden">
         <div className="relative isolate overflow-hidden bg-[#3C1515]">
           <img
@@ -44,15 +41,6 @@ export default function Contact() {
           />
 
           <div className="relative mx-auto flex w-full max-w-7xl flex-col gap-5 px-4 py-14 sm:py-20">
-            <Reveal>
-              <p className="inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 font-inter text-[10px] font-semibold uppercase tracking-[0.35em] text-[#FFE9E9] backdrop-blur-md sm:text-[11px]">
-                <span className="relative flex h-2 w-2">
-                  <span className="absolute inset-0 animate-ping rounded-full bg-[#FFBD53] opacity-75" />
-                  <span className="relative h-2 w-2 rounded-full bg-[#FFBD53]" />
-                </span>
-                Always reachable
-              </p>
-            </Reveal>
             <Reveal delay={80}>
               <h1 className="font-inter text-4xl font-bold leading-tight text-[#FFF] sm:text-5xl lg:text-6xl">
                 Emergnecy Contacts

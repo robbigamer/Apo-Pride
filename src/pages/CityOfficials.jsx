@@ -1,4 +1,3 @@
-import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import PageHero from "../components/PageHero";
 import Reveal from "../components/Reveal";
@@ -116,12 +115,9 @@ function LeaderSection({ reverse = false, badge, name, bio, image, alt, maxWidth
 
 export default function CityOfficials() {
   return (
-    <div className="flex min-h-screen flex-col bg-[#FFF]">
-      <Navbar active="CITY OFFICIALS" />
-
+    <div className="flex flex-1 flex-col bg-[#FFF]">
       <main id="main-content" className="flex flex-1 flex-col">
         <PageHero
-          eyebrow="Meet the team"
           title="CITY OFFICIALS"
           description="The public servants working for the people of Olongapo City."
         />
