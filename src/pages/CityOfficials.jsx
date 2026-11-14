@@ -1,6 +1,7 @@
 import Footer from "../components/Footer";
 import PageHero from "../components/PageHero";
 import Reveal from "../components/Reveal";
+import viceMayorImg from "../img/vicemayor.webp";
 
 const councilors = [
   {
@@ -173,7 +174,7 @@ export default function CityOfficials() {
           badge="Vice Mayor"
           name="KAYE ANN SIOSON LEGASPI"
           bio="Is the current Vice Mayor of Olongapo City, having assumed office on June 30, 2025. Before becoming vice mayor, she served as an Olongapo City Councilor from 2019 to 2025. She is known for her involvement in youth programs, public service, and chess advocacy. Her experience in public service continues to support her role in serving the people of Olongapo City."
-          image="/assets/officials/vice-mayor-placeholder.svg"
+          image={viceMayorImg}
           alt="Kaye Ann Sioson Legaspi"
           maxWidth="368px"
         />
